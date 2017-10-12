@@ -1,42 +1,30 @@
 package seedu.address.model.person;
 
-import static java.util.Objects.requireNonNull;
-
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
- * Represents a Person's address in the address book.
- * Guarantees: immutable;
+ * Represents a Person's birthday in the address book.
+ * Guarantees: immutable.
  */
-
 public class Birthday {
+
     public static final String MESSAGE_BIRTHDAY_CONSTRAINTS =
-            "Person birthday should be in the format dd/mm/yyyy, default is 00/00/0000";
+            "Person birthday should be in dd/mm/yyyy format, and it should not be blank";
 
-
-    public static final String BIRTHDAY_VALIDATION_REGEX =
-            "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$";
-
+    /*
+     * The first character of the birthday must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
     public final String value;
 
     /**
-     * Validates given address.
+     * Validates given birthday.
      *
      * @throws IllegalValueException if given address string is invalid.
      */
-    public Birthday(String birthday) throws IllegalValueException {
-        requireNonNull(birthday);
-        if (!isValidBirthday(birthday)) {
-            throw new IllegalValueException(MESSAGE_BIRTHDAY_CONSTRAINTS);
-        }
-        this.value = birthday;
-    }
-
-    /**
-     * Returns true if a given string is a valid person email.
-     */
-    public static boolean isValidBirthday(String test) {
-        return test.matches(BIRTHDAY_VALIDATION_REGEX);
+    public Birthday(String birthdayNum) throws IllegalValueException {
+        //requireNonNull(birthdayNum);
+        this.value = birthdayNum;
     }
 
     @Override
@@ -55,6 +43,5 @@ public class Birthday {
     public int hashCode() {
         return value.hashCode();
     }
-
 
 }
