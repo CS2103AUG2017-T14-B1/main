@@ -5,10 +5,12 @@ import java.util.Set;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.person.SecPhone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -41,7 +43,7 @@ public class PersonBuilder {
     /**
      * Initializes the PersonBuilder with the data of {@code personToCopy}.
      */
-    public PersonBuilder(ReadOnlyPerson personToCopy) {
+    public PersonBuilder(ReadOnlyPerson personToCopy) throws IllegalValueException {
         this.person = new Person(personToCopy);
     }
 
@@ -101,6 +103,27 @@ public class PersonBuilder {
             this.person.setEmail(new Email(email));
         } catch (IllegalValueException ive) {
             throw new IllegalArgumentException("email is expected to be unique.");
+        }
+        return this;
+    }
+
+    /**
+     +     * Sets the {@code Birthday} of the {@code Person} that we are building.
+     +     */
+    public PersonBuilder withGender(String gender) {
+        try {
+            this.person.setGender(new Gender(gender));
+        } catch (IllegalValueException ive) {
+            throw new IllegalArgumentException("gender is either male or female");
+        }
+        return this;
+    }
+
+    public PersonBuilder withSecPhone(String secPhone) {
+        try {
+            this.person.setSecPhone(new SecPhone(secPhone));
+        } catch (IllegalValueException ive) {
+            throw new IllegalArgumentException("phone most be integer more that 3 digits or empty");
         }
         return this;
     }
