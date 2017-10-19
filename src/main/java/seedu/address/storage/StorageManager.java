@@ -19,7 +19,7 @@ import seedu.address.model.UserPrefs;
  */
 public class StorageManager extends ComponentManager implements Storage {
 
-    private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
+    private static final Logger logger = LogsCenter.getLogger(seedu.address.storage.StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
 
@@ -77,10 +77,6 @@ public class StorageManager extends ComponentManager implements Storage {
         addressBookStorage.saveAddressBook(addressBook, filePath);
     }
 
-    @Override
-    public void saveAddressBookAs(ReadOnlyAddressBook addressBook, String filePath) throws IOException {
-        addressBookStorage.saveAddressBook(addressBook, filePath);
-    }
 
     @Override
     @Subscribe

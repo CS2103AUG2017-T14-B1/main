@@ -27,7 +27,7 @@ import seedu.address.commons.exceptions.DataConversionException;
  */
 public class JsonUtil {
 
-    private static final Logger logger = LogsCenter.getLogger(JsonUtil.class);
+    private static final Logger logger = LogsCenter.getLogger(seedu.address.commons.util.JsonUtil.class);
 
     private static ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules()
             .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)

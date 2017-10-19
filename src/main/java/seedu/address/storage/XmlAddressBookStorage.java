@@ -18,7 +18,7 @@ import seedu.address.model.ReadOnlyAddressBook;
  */
 public class XmlAddressBookStorage implements AddressBookStorage {
 
-    private static final Logger logger = LogsCenter.getLogger(XmlAddressBookStorage.class);
+    private static final Logger logger = LogsCenter.getLogger(seedu.address.storage.XmlAddressBookStorage.class);
 
     private String filePath;
 

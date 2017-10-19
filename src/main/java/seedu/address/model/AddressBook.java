@@ -183,9 +183,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && this.persons.equals(((AddressBook) other).persons)
-                && this.tags.equalsOrderInsensitive(((AddressBook) other).tags));
+                || (other instanceof seedu.address.model.AddressBook // instanceof handles nulls
+                && this.persons.equals(((seedu.address.model.AddressBook) other).persons)
+                && this.tags.equalsOrderInsensitive(((seedu.address.model.AddressBook) other).tags));
     }
 
     @Override

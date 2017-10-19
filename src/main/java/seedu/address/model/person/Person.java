@@ -22,21 +22,35 @@ public class Person implements ReadOnlyPerson {
     private ObjectProperty<Phone> phone;
     private ObjectProperty<Email> email;
     private ObjectProperty<Address> address;
-
+    private ObjectProperty<Nickname> nickname;
 
     private ObjectProperty<UniqueTagList> tags;
 
-
     /**
-     * Every field must be present and not null.
+     * Every field must be present and not null except nickname.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
+        Nickname defaultNick = new Nickname();
         this.name = new SimpleObjectProperty<>(name);
         this.phone = new SimpleObjectProperty<>(phone);
         this.email = new SimpleObjectProperty<>(email);
         this.address = new SimpleObjectProperty<>(address);
+        this.nickname = new SimpleObjectProperty<> (defaultNick);
+        // protect internal tags from changes in the arg list
+        this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
+    }
 
+    /**
+     * Every field must be present and not null.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Nickname nickname, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, nickname, tags);
+        this.name = new SimpleObjectProperty<>(name);
+        this.phone = new SimpleObjectProperty<>(phone);
+        this.email = new SimpleObjectProperty<>(email);
+        this.address = new SimpleObjectProperty<>(address);
+        this.nickname = new SimpleObjectProperty<>(nickname);
         // protect internal tags from changes in the arg list
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
     }
@@ -105,6 +119,20 @@ public class Person implements ReadOnlyPerson {
         return address.get();
     }
 
+    public void setNickname(Nickname nickname) {
+        this.nickname.set(requireNonNull(nickname));
+    }
+
+    @Override
+    public ObjectProperty<Nickname> nicknameProperty() {
+        return nickname;
+    }
+
+    @Override
+    public Nickname getNickname() {
+        return nickname.get();
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -135,7 +163,7 @@ public class Person implements ReadOnlyPerson {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, nickname, tags);
     }
 
     @Override

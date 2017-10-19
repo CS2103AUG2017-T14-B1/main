@@ -18,7 +18,7 @@ import seedu.address.commons.events.ui.NewResultAvailableEvent;
  */
 public class ResultDisplay extends UiPart<Region> {
 
-    private static final Logger logger = LogsCenter.getLogger(ResultDisplay.class);
+    private static final Logger logger = LogsCenter.getLogger(seedu.address.ui.ResultDisplay.class);
     private static final String FXML = "ResultDisplay.fxml";
 
     private final StringProperty displayed = new SimpleStringProperty("");

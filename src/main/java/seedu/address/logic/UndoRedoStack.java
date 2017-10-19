@@ -76,11 +76,11 @@ public class UndoRedoStack {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof UndoRedoStack)) {
+        if (!(other instanceof seedu.address.logic.UndoRedoStack)) {
             return false;
         }
 
-        UndoRedoStack stack = (UndoRedoStack) other;
+        seedu.address.logic.UndoRedoStack stack = (seedu.address.logic.UndoRedoStack) other;
 
         // state check
         return undoStack.equals(stack.undoStack)

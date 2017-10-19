@@ -12,8 +12,8 @@ public class Index {
     private int zeroBasedIndex;
 
     /**
-     * Index can only be created by calling {@link Index#fromZeroBased(int)} or
-     * {@link Index#fromOneBased(int)}.
+     * Index can only be created by calling {@link seedu.address.commons.core.index.Index#fromZeroBased(int)} or
+     * {@link seedu.address.commons.core.index.Index#fromOneBased(int)}.
      */
     private Index(int zeroBasedIndex) {
         if (zeroBasedIndex < 0) {

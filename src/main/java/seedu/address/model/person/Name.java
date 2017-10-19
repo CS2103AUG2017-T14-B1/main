@@ -51,8 +51,8 @@ public class Name {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Name // instanceof handles nulls
-                && this.fullName.equals(((Name) other).fullName)); // state check
+                || (other instanceof seedu.address.model.person.Name // instanceof handles nulls
+                && this.fullName.equals(((seedu.address.model.person.Name) other).fullName)); // state check
     }
 
     @Override

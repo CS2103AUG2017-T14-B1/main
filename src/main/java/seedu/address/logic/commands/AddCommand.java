@@ -61,7 +61,7 @@ public class AddCommand extends UndoableCommand {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddCommand // instanceof handles nulls
-                && toAdd.equals(((AddCommand) other).toAdd));
+                || (other instanceof seedu.address.logic.commands.AddCommand // instanceof handles nulls
+                && toAdd.equals(((seedu.address.logic.commands.AddCommand) other).toAdd));
     }
 }

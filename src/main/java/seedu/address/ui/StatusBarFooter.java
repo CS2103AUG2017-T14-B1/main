@@ -32,7 +32,7 @@ public class StatusBarFooter extends UiPart<Region> {
      */
     private static Clock clock = Clock.systemDefaultZone();
 
-    private static final Logger logger = LogsCenter.getLogger(StatusBarFooter.class);
+    private static final Logger logger = LogsCenter.getLogger(seedu.address.ui.StatusBarFooter.class);
 
     private static final String FXML = "StatusBarFooter.fxml";
 
@@ -53,7 +53,7 @@ public class StatusBarFooter extends UiPart<Region> {
      * Sets the clock used to determine the current time.
      */
     public static void setClock(Clock clock) {
-        StatusBarFooter.clock = clock;
+        seedu.address.ui.StatusBarFooter.clock = clock;
     }
 
     /**

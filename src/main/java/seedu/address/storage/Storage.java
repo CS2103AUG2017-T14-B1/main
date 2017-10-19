@@ -30,14 +30,6 @@ public interface Storage extends AddressBookStorage, UserPrefsStorage {
     void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
 
     /**
-     * saves current version of address book to a location specified by the user
-     * @param addressBook
-     * @param filePath
-     * @throws IOException
-     */
-    void saveAddressBookAs(ReadOnlyAddressBook addressBook, String filePath) throws IOException;
-
-    /**
      * Saves the current version of the Address Book to the hard disk.
      *   Creates the data file if it is missing.
      * Raises {@link DataSavingExceptionEvent} if there was an error during saving.

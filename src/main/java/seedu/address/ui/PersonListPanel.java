@@ -22,7 +22,7 @@ import seedu.address.model.person.ReadOnlyPerson;
  */
 public class PersonListPanel extends UiPart<Region> {
     private static final String FXML = "PersonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+    private final Logger logger = LogsCenter.getLogger(seedu.address.ui.PersonListPanel.class);
 
     @FXML
     private ListView<PersonCard> personListView;

@@ -23,7 +23,7 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
 
-    private final Logger logger = LogsCenter.getLogger(CommandBox.class);
+    private final Logger logger = LogsCenter.getLogger(seedu.address.ui.CommandBox.class);
     private final Logic logic;
     private ListElementPointer historySnapshot;
 

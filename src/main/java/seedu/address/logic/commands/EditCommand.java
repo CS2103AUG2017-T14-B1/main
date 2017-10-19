@@ -112,12 +112,12 @@ public class EditCommand extends UndoableCommand {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
+        if (!(other instanceof seedu.address.logic.commands.EditCommand)) {
             return false;
         }
 
         // state check
-        EditCommand e = (EditCommand) other;
+        seedu.address.logic.commands.EditCommand e = (seedu.address.logic.commands.EditCommand) other;
         return index.equals(e.index)
                 && editPersonDescriptor.equals(e.editPersonDescriptor);
     }
