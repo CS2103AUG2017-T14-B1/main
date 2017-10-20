@@ -10,6 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
@@ -51,7 +52,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// list overwrite operations
 
-    public void setPersons(List<? extends ReadOnlyPerson> persons) throws DuplicatePersonException {
+    public void setPersons(List<? extends ReadOnlyPerson> persons)
+            throws DuplicatePersonException {
         this.persons.setPersons(persons);
     }
 
@@ -83,7 +85,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      *
      * @throws DuplicatePersonException if an equivalent person already exists.
      */
-    public void addPerson(ReadOnlyPerson p) throws DuplicatePersonException {
+    public void addPerson(ReadOnlyPerson p) throws DuplicatePersonException, IllegalValueException {
         Person newPerson = new Person(p);
         syncMasterTagListWith(newPerson);
         // TODO: the tags master list will be updated even though the below line fails.
@@ -103,7 +105,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @see #syncMasterTagListWith(Person)
      */
     public void updatePerson(ReadOnlyPerson target, ReadOnlyPerson editedReadOnlyPerson)
-            throws DuplicatePersonException, PersonNotFoundException {
+            throws DuplicatePersonException, PersonNotFoundException, IllegalValueException {
         requireNonNull(editedReadOnlyPerson);
 
         Person editedPerson = new Person(editedReadOnlyPerson);
