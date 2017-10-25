@@ -505,13 +505,13 @@ image::add.png[width="200"]
 
 
 For remove, we will loop through the uniquePhoneList and remove this phone and check for NoPhoneFoundException. The illustration is below.
-image::remove.png[width="200']
+image::remove.png[width="200"]
 
 For showAllPhones, if there is no additional numbers, only the primary number will be displayed. Illustration is below.
-image::showAllPhonesWithNoAdditionalPhones.png[width="200']
+image::showAllPhonesWithNoAdditionalPhones.png[width="200"]
 
 If there are numbers in the uniquePhoneList, the all numbers will be displayed with an index in front of it. Illustration is below.
-image::showAllPhones.png[width="200']
+image::showAllPhones.png[width="200"]
 
  
 ==== Storage
@@ -528,7 +528,6 @@ We use asciidoc for writing documentation.
 
 [NOTE]
 We chose asciidoc over Markdown because asciidoc, although a bit more complex than Markdown, provides more flexibility in formatting.
-
 === Editing Documentation
 
 See <<UsingGradle#rendering-asciidoc-files, UsingGradle.adoc>> to learn how to render `.adoc` files locally to preview the end result of your edits.
@@ -537,7 +536,6 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 === Publishing Documentation
 
 See <<UsingTravis#deploying-github-pages, UsingTravis.adoc>> to learn how to deploy GitHub Pages using Travis.
-
 === Converting Documentation to PDF format
 
 We use https://www.google.com/chrome/browser/desktop/[Google Chrome] for converting documentation to PDF format, as Chrome's PDF engine preserves hyperlinks used in webpages.
