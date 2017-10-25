@@ -22,6 +22,7 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
 
     private ObjectProperty<Name> name;
     private ObjectProperty<Phone> phone;
+    private ObjectProperty<UniquePhoneList> uniquePhoneList;
     private ObjectProperty<Email> email;
     private ObjectProperty<Address> address;
     private ObjectProperty<Photo> photo;
@@ -37,6 +38,21 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = new SimpleObjectProperty<>(name);
         this.phone = new SimpleObjectProperty<>(phone);
+        this.uniquePhoneList = new SimpleObjectProperty<>(new UniquePhoneList());
+        this.email = new SimpleObjectProperty<>(email);
+        this.address = new SimpleObjectProperty<>(address);
+
+        // protect internal tags from changes in the arg list
+        this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
+        this.customFields = new SimpleObjectProperty<>(new UniqueCustomFieldList());
+    }
+
+    public Person(Name name, Phone phone, UniquePhoneList uniquePhoneList,
+                  Email email, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, uniquePhoneList, email, address, tags);
+        this.name = new SimpleObjectProperty<>(name);
+        this.phone = new SimpleObjectProperty<>(phone);
+        this.uniquePhoneList = new SimpleObjectProperty<>(uniquePhoneList);
         this.email = new SimpleObjectProperty<>(email);
         this.address = new SimpleObjectProperty<>(address);
         this.photo = new SimpleObjectProperty<>(new Photo());
@@ -53,6 +69,21 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
         requireAllNonNull(name, phone, email, address, tags, customFields);
         this.name = new SimpleObjectProperty<>(name);
         this.phone = new SimpleObjectProperty<>(phone);
+        this.uniquePhoneList = new SimpleObjectProperty<>(new UniquePhoneList(phone));
+        this.email = new SimpleObjectProperty<>(email);
+        this.address = new SimpleObjectProperty<>(address);
+        // protect internal tags from changes in the arg list
+        this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
+        // protect internal custom fields from changes in the arg list
+        this.customFields = new SimpleObjectProperty<>(new UniqueCustomFieldList(customFields));
+    }
+
+    public Person(Name name, Phone phone, UniquePhoneList uniquePhoneList,
+                  Email email, Address address, Set<Tag> tags, Set<CustomField> customFields) {
+        requireAllNonNull(name, uniquePhoneList, email, address, tags, customFields);
+        this.name = new SimpleObjectProperty<>(name);
+        this.phone = new SimpleObjectProperty<>(phone);
+        this.uniquePhoneList = new SimpleObjectProperty<>(uniquePhoneList);
         this.email = new SimpleObjectProperty<>(email);
         this.address = new SimpleObjectProperty<>(address);
         this.photo = new SimpleObjectProperty<>(new Photo());
@@ -83,8 +114,22 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
      * Creates a copy of the given ReadOnlyPerson.
      */
     public Person(ReadOnlyPerson source) {
-        this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(),
+        this(source.getName(), source.getPhone(), source.getPhoneList(), source.getEmail(), source.getAddress(),
                 source.getTags(), source.getCustomFields());
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone.set(requireNonNull(phone));
+    }
+
+    @Override
+    public ObjectProperty<Phone> phoneProperty() {
+        return phone;
+    }
+
+    @Override
+    public Phone getPhone() {
+        return phone.get();
     }
 
     public void setName(Name name) {
@@ -101,18 +146,13 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
         return name.get();
     }
 
-    public void setPhone(Phone phone) {
-        this.phone.set(requireNonNull(phone));
+    @Override
+    public UniquePhoneList getPhoneList() {
+        return uniquePhoneList.get();
     }
 
-    @Override
-    public ObjectProperty<Phone> phoneProperty() {
-        return phone;
-    }
-
-    @Override
-    public Phone getPhone() {
-        return phone.get();
+    public ObjectProperty<UniquePhoneList> phoneListProperty() {
+        return uniquePhoneList;
     }
 
     public void setEmail(Email email) {
@@ -206,6 +246,7 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
     public void setCustomFields(Set<CustomField> replacement) {
         customFields.set(new UniqueCustomFieldList(replacement));
     }
+
 
     @Override
     public boolean equals(Object other) {

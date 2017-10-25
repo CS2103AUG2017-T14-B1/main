@@ -18,6 +18,8 @@ public interface ReadOnlyPerson {
     Name getName();
     ObjectProperty<Phone> phoneProperty();
     Phone getPhone();
+    ObjectProperty<UniquePhoneList> phoneListProperty();
+    UniquePhoneList getPhoneList();
     ObjectProperty<Email> emailProperty();
     Email getEmail();
     ObjectProperty<Address> addressProperty();
