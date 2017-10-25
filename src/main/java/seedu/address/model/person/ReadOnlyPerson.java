@@ -5,8 +5,6 @@ import java.util.Set;
 import javafx.beans.property.ObjectProperty;
 import seedu.address.model.customField.CustomField;
 import seedu.address.model.customField.UniqueCustomFieldList;
-import seedu.address.model.person.phone.Phone;
-import seedu.address.model.person.phone.UniquePhoneList;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 

@@ -1,4 +1,4 @@
-package seedu.address.model.person.phone;
+package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
@@ -112,15 +112,15 @@ public class UniquePhoneList implements Iterable<Phone> {
     public boolean equals(Object other) {
         assert CollectionUtil.elementsAreUnique(internalList);
         return other == this // short circuit if same object
-                || (other instanceof seedu.address.model.person.phone.UniquePhoneList // instanceof handles nulls
-                && this.internalList.equals(((seedu.address.model.person.phone.UniquePhoneList) other).internalList));
+                || (other instanceof UniquePhoneList // instanceof handles nulls
+                && this.internalList.equals(((UniquePhoneList) other).internalList));
     }
 
     /**
      * Returns true if the element in this list is equal to the elements in {@code other}.
      * The elements do not have to be in the same order.
      */
-    public boolean equalsOrderInsensitive(seedu.address.model.person.phone.UniquePhoneList other) {
+    public boolean equalsOrderInsensitive(UniquePhoneList other) {
         assert CollectionUtil.elementsAreUnique(internalList);
         assert CollectionUtil.elementsAreUnique(other.internalList);
         return this == other || new HashSet<>(this.internalList).equals(new HashSet<>(other.internalList));

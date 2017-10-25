@@ -9,7 +9,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.CustomCommand;
 import seedu.address.logic.commands.PhoneCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.phone.Phone;
+import seedu.address.model.person.Phone;
 
 /**
  * Parses input arguments and creates a new object
