@@ -21,7 +21,7 @@ import seedu.address.model.tag.UniqueTagList;
 public class Person implements ReadOnlyPerson, Comparable<Person> {
 
     private ObjectProperty<Name> name;
-    private ObjectProperty<Phone> primaryPhone;
+    private ObjectProperty<Phone> phone;
     private ObjectProperty<UniquePhoneList> uniquePhoneList;
     private ObjectProperty<Email> email;
     private ObjectProperty<Address> address;
@@ -37,7 +37,7 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = new SimpleObjectProperty<>(name);
-        this.primaryPhone = new SimpleObjectProperty<>(phone);
+        this.phone = new SimpleObjectProperty<>(phone);
         this.uniquePhoneList = new SimpleObjectProperty<>(new UniquePhoneList());
         this.email = new SimpleObjectProperty<>(email);
         this.address = new SimpleObjectProperty<>(address);
@@ -51,7 +51,7 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
                   Email email, Address address, Set<Tag> tags) {
         requireAllNonNull(name, uniquePhoneList, email, address, tags);
         this.name = new SimpleObjectProperty<>(name);
-        this.primaryPhone = new SimpleObjectProperty<>(phone);
+        this.phone = new SimpleObjectProperty<>(phone);
         this.uniquePhoneList = new SimpleObjectProperty<>(uniquePhoneList);
         this.email = new SimpleObjectProperty<>(email);
         this.address = new SimpleObjectProperty<>(address);
@@ -67,7 +67,7 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<CustomField> customFields) {
         requireAllNonNull(name, phone, email, address, tags, customFields);
         this.name = new SimpleObjectProperty<>(name);
-        this.primaryPhone = new SimpleObjectProperty<>(phone);
+        this.phone = new SimpleObjectProperty<>(phone);
         this.uniquePhoneList = new SimpleObjectProperty<>(new UniquePhoneList(phone));
         this.email = new SimpleObjectProperty<>(email);
         this.address = new SimpleObjectProperty<>(address);
@@ -81,7 +81,7 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
                   Email email, Address address, Set<Tag> tags, Set<CustomField> customFields) {
         requireAllNonNull(name, uniquePhoneList, email, address, tags, customFields);
         this.name = new SimpleObjectProperty<>(name);
-        this.primaryPhone = new SimpleObjectProperty<>(phone);
+        this.phone = new SimpleObjectProperty<>(phone);
         this.uniquePhoneList = new SimpleObjectProperty<>(uniquePhoneList);
         this.email = new SimpleObjectProperty<>(email);
         this.address = new SimpleObjectProperty<>(address);
@@ -100,17 +100,17 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
     }
 
     public void setPhone(Phone phone) {
-        this.primaryPhone.set(requireNonNull(phone));
+        this.phone.set(requireNonNull(phone));
     }
 
     @Override
     public ObjectProperty<Phone> phoneProperty() {
-        return primaryPhone;
+        return phone;
     }
 
     @Override
     public Phone getPhone() {
-        return primaryPhone.get();
+        return phone.get();
     }
 
     public void setName(Name name) {
@@ -230,7 +230,7 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, primaryPhone, email, address, tags);
+        return Objects.hash(name, phone, email, address, tags);
     }
 
     @Override
