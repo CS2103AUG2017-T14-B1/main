@@ -80,6 +80,7 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
                 getModel().getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()), editedPerson);
         assertCommandSuccess(command, model, expectedResultMessage);
 
+        //@@author willxujun
         /* Case: edit a person with new values same as existing values -> edited */
         /* Disabled test case: because each edit reshuffles the person list, this test case will fail as a result of
         sorting mechanism.
@@ -87,6 +88,7 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
                 + ADDRESS_DESC_BOB + TAG_DESC_FRIEND + TAG_DESC_HUSBAND;
         assertCommandSuccess(command, index, BOB);
         */
+        //@@author
 
         /* Case: edit some fields -> edited*/
         index = INDEX_FIRST_PERSON;

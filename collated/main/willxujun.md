@@ -1,19 +1,32 @@
-package seedu.address.ui;
+# willxujun
+###### \java\seedu\address\logic\parser\SearchParser.java
+``` java
+/**
+ * Represents a parser that parses input from the search bar
+ */
+public class SearchParser {
 
-import java.util.logging.Logger;
+    /**
+     * returns a Command as parsed
+     * @param args
+     * @return a FindCommand of the search word args if search bar input is not empty, a ListCommand if empty search bar
+     * @throws ParseException
+     */
+    public Command parse(String args) throws ParseException {
+        String trimmedArgs = args.trim();
+        if (trimmedArgs.isEmpty()) {
+            return new ListCommand();
+        }
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Region;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.ui.NewResultAvailableEvent;
-import seedu.address.logic.Logic;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
+        String[] nameKeywords = trimmedArgs.split("\\s+");
 
-//@@author willxujun
+        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+    }
+
+}
+```
+###### \java\seedu\address\ui\SearchBox.java
+``` java
 /**
  * The UI component that is responsible for receiving user search command.
  */
@@ -62,3 +75,15 @@ public class SearchBox extends UiPart<Region> {
     }
 
 }
+```
+###### \resources\view\SearchBox.fxml
+``` fxml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <TextField fx:id="searchTextField" onKeyTyped="#handleKeyTyped" promptText="Search..." />
+</StackPane>
+```

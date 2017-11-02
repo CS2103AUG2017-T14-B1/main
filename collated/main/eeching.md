@@ -1,5 +1,5 @@
 # eeching
-###### /java/seedu/address/logic/commands/PhoneCommand.java
+###### \java\seedu\address\logic\commands\PhoneCommand.java
 ``` java
 /**
  * Adds or updates a custom field of a person identified using it's last displayed index from the address book.
@@ -105,7 +105,7 @@ public class PhoneCommand extends UndoableCommand {
     }
 }
 ```
-###### /java/seedu/address/logic/parser/PhoneCommandParser.java
+###### \java\seedu\address\logic\parser\PhoneCommandParser.java
 ``` java
 /**
  * Parses input arguments and creates a new object
@@ -137,7 +137,7 @@ public class PhoneCommandParser implements Parser<PhoneCommand> {
 
 }
 ```
-###### /java/seedu/address/model/person/Birthday.java
+###### \java\seedu\address\model\person\Birthday.java
 ``` java
 /**
  * Represents a Person's address in the address book.
@@ -194,7 +194,7 @@ public class Birthday {
 
 }
 ```
-###### /java/seedu/address/model/person/exceptions/DuplicatePhoneException.java
+###### \java\seedu\address\model\person\exceptions\DuplicatePhoneException.java
 ``` java
 /**
  * Signals that the operation will result in duplicate Phone objects.
@@ -205,7 +205,7 @@ public class DuplicatePhoneException extends DuplicateDataException {
     }
 }
 ```
-###### /java/seedu/address/model/person/exceptions/NoLocalNumberException.java
+###### \java\seedu\address\model\person\exceptions\NoLocalNumberException.java
 ``` java
 /**
  * Signals that the operation will result in duplicate Phone objects.
@@ -217,14 +217,14 @@ public class NoLocalNumberException extends Exception {
     }
 }
 ```
-###### /java/seedu/address/model/person/exceptions/PhoneNotFoundException.java
+###### \java\seedu\address\model\person\exceptions\PhoneNotFoundException.java
 ``` java
 /**
  * Signals that the operation is unable to find the specified phone.
  */
 public class PhoneNotFoundException extends Exception {}
 ```
-###### /java/seedu/address/model/person/phone/UniquePhoneList.java
+###### \java\seedu\address\model\person\phone\UniquePhoneList.java
 ``` java
 /**
  * A list of phones that enforces no nulls and uniqueness between its elements.
@@ -347,7 +347,7 @@ public class UniquePhoneList implements Iterable<Phone> {
 }
 
 ```
-###### /resources/view/LightTheme.css
+###### \resources\view\LightTheme.css
 ``` css
 /**
  * Shared
@@ -498,7 +498,7 @@ public class UniquePhoneList implements Iterable<Phone> {
     -fx-font-weight: bold;
  }
 ```
-###### /resources/view/MainWindow.fxml
+###### \resources\view\MainWindow.fxml
 ``` fxml
 <VBox xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
   <stylesheets>

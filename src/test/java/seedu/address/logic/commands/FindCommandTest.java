@@ -78,6 +78,7 @@ public class FindCommandTest {
         assertCommandSuccess(command, expectedMessage, Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 
+    //@@author willxujun
     @Test
     /**
      * Changed to noPersonaFound because of new AND search mechanism.
@@ -87,6 +88,7 @@ public class FindCommandTest {
         FindCommand command = prepareCommand("Kurz Elle Kunz");
         assertCommandSuccess(command, expectedMessage, Collections.emptyList());
     }
+    //@@author
 
     /**
      * Parses {@code userInput} into a {@code FindCommand}.
